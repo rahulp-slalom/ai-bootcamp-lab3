@@ -28,13 +28,13 @@ function TaskList({ onEdit }) {
   };
 
   const getPriorityColor = (taskPriority, currentPriority) => {
-    // Selected priority is blue (#07F3E6), unselected is gray (#7A7A7A)
-    return taskPriority === currentPriority ? '#07F3E6' : '#7A7A7A';
+    // Selected priority is blue (#07F2E6), unselected is gray (#7A7A7A)
+    return taskPriority === currentPriority ? '#07F2E6' : '#7A7A7A';
   };
 
   const getPriorityBorderColor = (taskPriority, currentPriority) => {
     // Add a border for the selected priority
-    return taskPriority === currentPriority ? '#07F3E6' : '#7A7A7A';
+    return taskPriority === currentPriority ? '#07F2E6' : '#7A7A7A';
   };
 
   const fetchTasks = async () => {
