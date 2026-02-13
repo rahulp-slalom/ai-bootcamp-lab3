@@ -27,6 +27,16 @@ function TaskList({ onEdit }) {
     });
   };
 
+  const getPriorityColor = (taskPriority, currentPriority) => {
+    // Selected priority is blue (#07F3E6), unselected is gray (#7A7A7A)
+    return taskPriority === currentPriority ? '#07F3E6' : '#7A7A7A';
+  };
+
+  const getPriorityBorderColor = (taskPriority, currentPriority) => {
+    // Add a border for the selected priority
+    return taskPriority === currentPriority ? '#07F3E6' : '#7A7A7A';
+  };
+
   const fetchTasks = async () => {
     try {
       setLoading(true);
@@ -203,6 +213,30 @@ function TaskList({ onEdit }) {
                 gap: 1
               }}
             >
+              {/* Priority badges - show all three with active one highlighted */}
+              <Box sx={{ display: 'flex', gap: 0.5, mr: 1 }}>
+                {['P1', 'P2', 'P3'].map((p) => (
+                  <Box
+                    key={p}
+                    sx={{
+                      width: 32,
+                      height: 32,
+                      borderRadius: '50%',
+                      border: `2px solid ${getPriorityBorderColor(p, task.priority)}`,
+                      backgroundColor: task.priority === p ? getPriorityColor(p, task.priority) : 'transparent',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '0.75rem',
+                      fontWeight: 600,
+                      color: task.priority === p ? '#fff' : getPriorityColor(p, task.priority),
+                      transition: 'all 0.2s ease'
+                    }}
+                  >
+                    {p}
+                  </Box>
+                ))}
+              </Box>
               {task.due_date && (
                 <Chip
                   icon={<EventIcon sx={{ fontSize: 14 }} />}

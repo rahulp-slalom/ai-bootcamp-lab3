@@ -5,6 +5,12 @@
   padding: 20px;
 }
 
+/* Priority color scheme from UI sketch */
+:root {
+  --priority-selected: #07F3E6;  /* Blue - when selected */
+  --priority-unselected: #7A7A7A; /* Gray - when unselected */
+}
+
 .App-header {
   background-color: #282c34;
   padding: 20px;
